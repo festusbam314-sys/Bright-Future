@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Future Nursery and Primary School | [Location]</title>
+    <meta name="description" content="Bright Future is a warm, safe, and inspiring nursery and primary school in [Location], Nigeria. Explore our programmes, admissions process, and learning environment.">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Bright Future Nursery and Primary School | [Location]">
+    <meta property="og:description" content="Nurturing Bright Minds for a Beautiful Future. High-quality nursery and primary education in [Location], Nigeria.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1200">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            200: '#f5d0fe',
+                            300: '#f0abfc',
+                            400: '#e879f9',
+                            500: '#d946ef', // Main Brand Fuchsia
+                            600: '#c026d3',
+                            700: '#a21caf',
+                            800: '#86198f',
+                            dark: '#3b0764', // Deep Purple
+                            purple: '#581c87',
+                            lavender: '#f3e8ff',
+                            yellow: '#fde047',
+                            warmyellow: '#eab308',
+                            sky: '#0ea5e9',
+                            skylight: '#e0f2fe',
+                            cream: '#fffdfa',
+                            softbg: '#faf5ff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Nunito', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'soft-pink': '0 10px 30px -5px rgba(217, 70, 239, 0.15)',
+                        'soft-purple': '0 15px 35px -5px rgba(59, 7, 100, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- React and Babel CDNs -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Schema Markup for School SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "School",
+      "name": "Bright Future Nursery and Primary School",
+      "description": "A warm, safe, and nurturing nursery and primary school providing early-years and primary education in Nigeria.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "[School Address]",
+        "addressLocality": "[Location]",
+        "addressCountry": "NG"
+      },
+      "telephone": "[Phone Number]",
+      "email": "[Email Address]",
+      "url": "https://brightfuture.sch.ng",
+      "openingHours": "[School Opening Hours]"
+    }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', 'Nunito', sans-serif;
+            background-color: #fffdfa;
+            color: #1f2937;
+            overflow-x: hidden;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fae8ff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d946ef;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c026d3;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(#d946ef 0.75px, transparent 0.75px), radial-gradient(#38bdf8 0.75px, #fffdfa 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            background-opacity: 0.1;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Custom SVG Icon Helper Components for Crisp Visual Rendering
+        const IconCheck = ({ className = "w-5 h-5" }) => (
+            <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"></path>
+            </svg>
+        );
+
+        const IconPhone = ({ className = "w-5 h-5" }) => (
+            <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+        );
+
+        const IconMail = ({ className = "w-5 h-5" }) => (
+            <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+        );
+
+        const IconMapPin = ({ className = "w-5 h-5" }) => (
+            <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+        );
+
+        const IconClock = ({ className = "w-5 h-5" }) => (
+            <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+        );
+
+        const IconMenu = ({ className = "w-6 h-6" }) => (
+            <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        );
+
+        const IconX = ({ className = "w-6 h-6" }) => (
+            <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        );
+
+        const IconWhatsApp = ({ className = "w-6 h-6" }) => (
+            <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.205 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+        );
+
+        const App = () => {
+            // State management
+            const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+            const [activeFaq, setActiveFaq] = useState(null);
+            const [visitModalOpen, setVisitModalOpen] = useState(false);
+            const [admissionModalOpen, setAdmissionModalOpen] = useState(false);
+            const [formSubmitted, setFormSubmitted] = useState(false);
+            const [galleryModalImage, setGalleryModalImage] = useState(null);
+
+            // Contact Form State
+            const [formData, setFormData] = useState({
+                fullName: '',
+                childName: '',
+                childAge: '',
+                programme: 'Nursery',
+                phone: '',
+                email: '',
+                message: '',
+                preferredContact: 'WhatsApp'
+            });
+
+            const handleInputChange = (e) => {
+                const { name, value } = e.target;
+                setFormData(prev => ({ ...prev, [name]: value }));
+            };
+
+            const handleFormSubmit = (e) => {
+                e.preventDefault();
+                setFormSubmitted(true);
+            };
+
+            const toggleFaq = (index) => {
+                setActiveFaq(activeFaq === index ? null : index);
+            };
+
+            // Program Cards Data
+            const programmes = [
+                {
+                    title: "Early Years",
+                    age: "Ages [Insert Age Range]",
+                    desc: "A joyful first learning experience where children develop confidence, communication, social skills, early literacy, and numeracy through guided play and discovery.",
+                    badge: "Foundation Stage",
+                    color: "border-brand-500 hover:border-brand-600 bg-gradient-to-br from-purple-50 to-pink-50"
+                },
+                {
+                    title: "Nursery",
+                    age: "Ages [Insert Age Range]",
+                    desc: "Our nursery programme supports children as they become more independent, curious, expressive, and ready for structured learning.",
+                    badge: "Discovery & Growth",
+                    color: "border-brand- sky bg-gradient-to-br from-sky-50 to-indigo-50"
+                },
+                {
+                    title: "Primary School",
+                    age: "Ages [Insert Age Range]",
+                    desc: "Our primary programme builds strong academic foundations while encouraging creativity, good character, leadership, and critical thinking.",
+                    badge: "Academic Excellence",
+                    color: "border-amber-400 bg-gradient-to-br from-amber-50 to-orange-50"
+                }
+            ];
+
+            // Why Choose Us Cards Data
+            const whyUsFeatures = [
+                {
+                    title: "Child-Centred Learning",
+                    desc: "Every child is supported according to their individual strengths, interests, and stage of development.",
+                    icon: "👶",
+                    bg: "bg-pink-100 text-brand-600"
+                },
+                {
+                    title: "Safe and Caring Environment",
+                    desc: "We create a secure, welcoming, and supportive space where children can learn with confidence.",
+                    icon: "🛡️",
+                    bg: "bg-purple-100 text-brand-dark"
+                },
+                {
+                    title: "Dedicated Teachers",
+                    desc: "Our educators are committed to helping every learner feel seen, supported, and encouraged.",
+                    icon: "👩‍🏫",
+                    bg: "bg-sky-100 text-sky-600"
+                },
+                {
+                    title: "Strong Academic Foundation",
+                    desc: "We make learning meaningful, engaging, and appropriate for each age group.",
+                    icon: "📚",
+                    bg: "bg-amber-100 text-amber-600"
+                },
+                {
+                    title: "Creativity and Discovery",
+                    desc: "Children learn through play, storytelling, art, music, practical activities, and exploration.",
+                    icon: "🎨",
+                    bg: "bg-emerald-100 text-emerald-600"
+                },
+                {
+                    title: "Parent Partnership",
+                    desc: "We believe that parents and teachers work best together in supporting every child's growth.",
+                    icon: "🤝",
+                    bg: "bg-rose-100 text-rose-600"
+                }
+            ];
+
+            // Learning Experience Elements
+            const learningPillars = [
+                { name: "Literacy & Reading", icon: "📖" },
+                { name: "Numeracy & Logic", icon: "🔢" },
+                { name: "Art & Creativity", icon: "🎨" },
+                { name: "Music & Movement", icon: "🎵" },
+                { name: "Science & Discovery", icon: "🔬" },
+                { name: "Outdoor Play & Sports", icon: "⚽" },
+                { name: "Social Development", icon: "💬" },
+                { name: "Values & Character", icon: "🌟" }
+            ];
+
+            // Gallery Items
+            const galleryImages = [
+                { title: "Classroom Learning", category: "Academics", url: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=600" },
+                { title: "Reading Time", category: "Literacy", url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=600" },
+                { title: "Art and Crafts", category: "Creativity", url: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&q=80&w=600" },
+                { title: "Outdoor Play", category: "Physical", url: "https://images.unsplash.com/photo-1567057419565-4349c49d8a04?auto=format&fit=crop&q=80&w=600" },
+                { title: "Music Activity", category: "Performing Arts", url: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=600" },
+                { title: "Science Activity", category: "Discovery", url: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=600" },
+                { title: "School Event", category: "Community", url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=600" },
+                { title: "Teacher & Child Interaction", category: "Mentorship", url: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=600" }
+            ];
+
+            // FAQ List
+            const faqs = [
+                {
+                    q: "What age does Bright Future accept?",
+                    a: "Please contact our admissions team to confirm the current age requirements and the most suitable class for your child."
+                },
+                {
+                    q: "How do I apply for admission?",
+                    a: "You can begin by completing the admission enquiry form, sending us a WhatsApp message, calling the school, or booking a school visit."
+                },
+                {
+                    q: "Can I visit the school before applying?",
+                    a: "Yes. Parents are encouraged to book a school visit so they can see the environment, meet the team, and ask questions."
+                },
+                {
+                    q: "What information do I need for admission?",
+                    a: "Our admissions team will guide you through the required documents and the next steps after you make an enquiry."
+                },
+                {
+                    q: "How can I contact the school?",
+                    a: "You can contact Bright Future by phone, WhatsApp, email, or by completing the contact form on this website."
+                }
+            ];
+
+            return (
+                <div className="min-h-screen flex flex-col font-sans bg-brand-cream text-gray-800">
+                    
+                    {}
+                    {/* 1. ANNOUNCEMENT BAR */}
+                    <div className="bg-gradient-to-r from-brand-dark via-brand-700 to-brand-500 text-white text-sm py-2.5 px-4 text-center font-medium shadow-sm relative z-50">
+                        <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 flex-wrap">
+                            <span className="flex items-center gap-1.5">
+                                <span className="bg-yellow-400 text-gray-900 text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wider animate-pulse">Open</span>
+                                Admissions are now open. Give your child a bright start at Bright Future
+                            </span>
+                            <button 
+                                onClick={() => setAdmissionModalOpen(true)}
+                                className="underline font-bold hover:text-brand-yellow transition-colors duration-200 text-xs sm:text-sm flex items-center gap-1"
+                            >
+                                Enquire Now →
+                            </button>
+                        </div>
+                    </div>
+
+                    {}
+                    {/* HEADER & STICKY NAVIGATION BAR */}
+                    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-purple-100 transition-all">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                            
+                            {/* Logo */}
+                            <a href="#" className="flex items-center gap-3 group">
+                                <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-dark flex items-center justify-center text-white shadow-md transform group-hover:scale-105 transition-transform">
+                                    <span className="font-extrabold text-xl tracking-wider">BF</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="font-extrabold text-xl sm:text-2xl text-brand-dark tracking-tight leading-none group-hover:text-brand-600 transition-colors">
+                                        Bright Future
+                                    </span>
+                                    <span className="text-[10px] font-bold text-brand-500 tracking-widest uppercase mt-0.5">
+                                        Nursery & Primary
+                                    </span>
+                                </div>
+                            </a>
+
+                            {/* Desktop Navigation Menu */}
+                            <nav className="hidden lg:flex items-center gap-7 font-medium text-sm text-gray-700">
+                                <a href="#home" className="hover:text-brand-600 transition-colors py-2">Home</a>
+                                <a href="#about" className="hover:text-brand-600 transition-colors py-2">About Us</a>
+                                <a href="#programmes" className="hover:text-brand-600 transition-colors py-2">Our Programmes</a>
+                                <a href="#why-us" className="hover:text-brand-600 transition-colors py-2">Why Bright Future</a>
+                                <a href="#admissions" className="hover:text-brand-600 transition-colors py-2">Admissions</a>
+                                <a href="#gallery" className="hover:text-brand-600 transition-colors py-2">Gallery</a>
+                                <a href="#contact" className="hover:text-brand-600 transition-colors py-2">Contact Us</a>
+                            </nav>
+
+                            {/* Highlighted CTA Button */}
+                            <div className="hidden lg:block">
+                                <button 
+                                    onClick={() => setVisitModalOpen(true)}
+                                    className="bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-soft-pink hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                                >
+                                    Book a School Visit
+                                </button>
+                            </div>
+
+                            {/* Mobile Menu Button */}
+                            <button 
+                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                                className="lg:hidden p-2 rounded-xl text-gray-700 hover:bg-purple-50 focus:outline-none"
+                                aria-label="Toggle menu"
+                            >
+                                {mobileMenuOpen ? <IconX /> : <IconMenu />}
+                            </button>
+                        </div>
+
+                        {/* Mobile Navigation Drawer */}
+                        {mobileMenuOpen && (
+                            <div className="lg:hidden bg-white border-b border-purple-100 px-4 pt-3 pb-6 space-y-3 shadow-xl animate-fadeIn">
+                                <a 
+                                    href="#home" 
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block px-3 py-2 rounded-lg font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600"
+                                >
+                                    Home
+                                </a>
+                                <a 
+                                    href="#about" 
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block px-3 py-2 rounded-lg font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600"
+                                >
+                                    About Us
+                                </a>
+                                <a 
+                                    href="#programmes" 
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block px-3 py-2 rounded-lg font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600"
+                                >
+                                    Our Programmes
+                                </a>
+                                <a 
+                                    href="#why-us" 
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block px-3 py-2 rounded-lg font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600"
+                                >
+                                    Why Bright Future
+                                </a>
+                                <a 
+                                    href="#admissions" 
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block px-3 py-2 rounded-lg font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600"
+                                >
+                                    Admissions
+                                </a>
+                                <a 
+                                    href="#gallery" 
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block px-3 py-2 rounded-lg font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600"
+                                >
+                                    Gallery
+                                </a>
+                                <a 
+                                    href="#contact" 
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block px-3 py-2 rounded-lg font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600"
+                                >
+                                    Contact Us
+                                </a>
+                                <div className="pt-2">
+                                    <button 
+                                        onClick={() => {
+                                            setMobileMenuOpen(false);
+                                            setVisitModalOpen(true);
+                                        }}
+                                        className="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold text-center py-3 rounded-xl shadow-soft-pink"
+                                    >
+                                        Book a School Visit
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </header>
+
+                    <main className="flex-grow">
+                        
+                        {}
+                        {/* 2. HERO SECTION */}
+                        <section id="home" className="relative bg-gradient-to-b from-brand-lavender/50 via-white to-brand-cream pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+                            {/* Decorative background shapes */}
+                            <div className="absolute top-10 left-10 w-72 h-72 bg-brand-300/20 rounded-full blur-3xl -z-10"></div>
+                            <div className="absolute bottom-10 right-10 w-96 h-96 bg-sky-300/20 rounded-full blur-3xl -z-10"></div>
+
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                                    
+                                    {/* Text Content */}
+                                    <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+                                        <div className="inline-flex items-center gap-2 bg-purple-100 text-brand-dark px-4 py-1.5 rounded-full font-bold text-xs sm:text-sm tracking-wide border border-purple-200">
+                                            <span className="w-2 h-2 rounded-full bg-brand-500 animate-ping"></span>
+                                            Nursery and Primary Education
+                                        </div>
+                                        
+                                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand-dark tracking-tight leading-tight">
+                                            Where Little Learners Grow Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 via-brand-600 to-brand-dark">Bright Futures</span>
+                                        </h1>
+
+                                        <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                                            At Bright Future, we provide a safe, joyful, and inspiring learning environment where every child is encouraged to learn, explore, create, and thrive.
+                                        </p>
+
+                                        {/* Action Buttons */}
+                                        <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                                            <button 
+                                                onClick={() => setAdmissionModalOpen(true)}
+                                                className="w-full sm:w-auto bg-brand-500 hover:bg-brand-600 text-white font-bold text-base px-8 py-4 rounded-2xl shadow-soft-pink hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+                                            >
+                                                Apply for Admission
+                                            </button>
+                                            <button 
+                                                onClick={() => setVisitModalOpen(true)}
+                                                className="w-full sm:w-auto bg-white border-2 border-brand-200 text-brand-dark hover:bg-brand-50 font-bold text-base px-8 py-4 rounded-2xl shadow-sm transition-all"
+                                            >
+                                                Book a School Visit
+                                            </button>
+                                        </div>
+
+                                        {/* Trust Highlights */}
+                                        <div className="pt-8 border-t border-purple-100/80 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
+                                            <div className="flex items-center gap-3 bg-white/80 backdrop-blur p-3 rounded-xl border border-purple-50 shadow-sm">
+                                                <div className="w-8 h-8 rounded-lg bg-pink-100 text-brand-600 flex items-center justify-center shrink-0 font-bold">✓</div>
+                                                <span className="text-xs font-semibold text-gray-800">Safe and nurturing environment</span>
+                                            </div>
+                                            <div className="flex items-center gap-3 bg-white/80 backdrop-blur p-3 rounded-xl border border-purple-50 shadow-sm">
+                                                <div className="w-8 h-8 rounded-lg bg-sky-100 text-sky-600 flex items-center justify-center shrink-0 font-bold">✓</div>
+                                                <span className="text-xs font-semibold text-gray-800">Learning through discovery & play</span>
+                                            </div>
+                                            <div className="flex items-center gap-3 bg-white/80 backdrop-blur p-3 rounded-xl border border-purple-50 shadow-sm">
+                                                <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 font-bold">✓</div>
+                                                <span className="text-xs font-semibold text-gray-800">Dedicated teachers who care</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Hero Image / Visual Card */}
+                                    <div className="lg:col-span-5 relative">
+                                        <div className="relative mx-auto max-w-md lg:max-w-none">
+                                            {/* Decorative frames */}
+                                            <div className="absolute -top-4 -left-4 w-full h-full border-4 border-brand-300 rounded-3xl -z-10 transform -rotate-2"></div>
+                                            <div className="absolute -bottom-4 -right-4 w-full h-full bg-brand-yellow/30 rounded-3xl -z-10 transform rotate-3"></div>
+                                            
+                                            <div className="overflow-hidden rounded-3xl shadow-soft-purple border-4 border-white bg-white">
+                                                <img 
+                                                    src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=800" 
+                                                    alt="Happy pupils learning at Bright Future" 
+                                                    className="w-full h-[400px] sm:h-[480px] object-cover hover:scale-105 transition-transform duration-700"
+                                                />
+                                            </div>
+
+                                            {/* Floating Badge */}
+                                            <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-purple-100 flex items-center gap-3 max-w-[220px]">
+                                                <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl shrink-0">
+                                                    🌟
+                                                </div>
+                                                <div>
+                                                    <p className="text-xs font-bold text-gray-900">Child-First Philosophy</p>
+                                                    <p className="text-[11px] text-gray-500">Inspiring confidence daily</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+
+                        {}
+                        {/* 3. WELCOME SECTION */}
+                        <section id="about" className="py-20 bg-white border-y border-purple-50">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                                    
+                                    {/* Image Side */}
+                                    <div className="relative order-2 lg:order-1">
+                                        <div className="relative rounded-3xl overflow-hidden shadow-lg border-2 border-brand-100">
+                                            <img 
+                                                src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800" 
+                                                alt="Children engaged in reading activity" 
+                                                className="w-full h-[380px] sm:h-[420px] object-cover"
+                                            />
+                                        </div>
+                                        <div className="absolute top-6 right-6 bg-brand-dark/90 backdrop-blur-md text-white p-4 rounded-2xl max-w-[200px] shadow-lg">
+                                            <p className="text-2xl font-black text-brand-yellow">100%</p>
+                                            <p className="text-xs text-purple-100">Care, Safety & Nurturing Dedication</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Text Content Side */}
+                                    <div className="space-y-6 order-1 lg:order-2">
+                                        <div className="inline-block px-3.5 py-1 bg-pink-100 text-brand-600 rounded-full text-xs font-bold uppercase tracking-widest">
+                                            Welcome Message
+                                        </div>
+                                        <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-dark leading-tight">
+                                            Welcome to Bright Future
+                                        </h2>
+                                        <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
+                                            Bright Future is a warm and caring nursery and primary school where children are supported to develop confidence, curiosity, creativity, and a lifelong love for learning. We believe every child is unique, and we create opportunities for each learner to grow academically, socially, emotionally, and creatively.
+                                        </p>
+
+                                        <div className="pt-2">
+                                            <a 
+                                                href="#programmes" 
+                                                className="inline-flex items-center gap-2 bg-brand-dark hover:bg-brand-purple text-white font-semibold px-7 py-3.5 rounded-xl shadow-md transition-all"
+                                            >
+                                                Discover Our School
+                                                <span>→</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+
+                        {}
+                        {/* 4. SCHOOL PROGRAMMES SECTION */}
+                        <section id="programmes" className="py-20 bg-gradient-to-b from-brand-cream to-white">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                
+                                <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                                    <span className="px-3.5 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-bold uppercase tracking-widest">
+                                        Educational Pathways
+                                    </span>
+                                    <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-dark">
+                                        Learning for Every Stage
+                                    </h2>
+                                    <p className="text-gray-600 text-base sm:text-lg">
+                                        Our programmes are designed to provide the right foundation at every stage of your child's early education journey.
+                                    </p>
+                                </div>
+
+                                <div className="grid md:grid-cols-3 gap-8">
+                                    {programmes.map((prog, idx) => (
+                                        <div 
+                                            key={idx} 
+                                            className={`rounded-3xl p-8 border-2 ${prog.color} shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group`}
+                                        >
+                                            <div className="space-y-4">
+                                                <span className="inline-block px-3 py-1 bg-white/90 font-bold text-xs text-brand-dark rounded-full shadow-xs">
+                                                    {prog.badge}
+                                                </span>
+                                                <h3 className="text-2xl font-bold text-brand-dark group-hover:text-brand-600 transition-colors">
+                                                    {prog.title}
+                                                </h3>
+                                                <p className="text-xs font-bold text-brand-500 uppercase tracking-wider">
+                                                    {prog.age}
+                                                </p>
+                                                <p className="text-gray-600 text-sm leading-relaxed">
+                                                    {prog.desc}
+                                                </p>
+                                            </div>
+
+                                            <div className="pt-8 mt-6 border-t border-black/5">
+                                                <button 
+                                                    onClick={() => setAdmissionModalOpen(true)}
+                                                    className="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-dark font-bold text-sm py-3 px-4 rounded-xl border border-purple-200 transition-colors shadow-xs flex items-center justify-center gap-2"
+                                                >
+                                                    Explore {prog.title}
+                                                    <span>→</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                            </div>
+                        </section>
+
+                        {}
+                        {/* 5. WHY CHOOSE US SECTION */}
+                        <section id="why-us" className="py-20 bg-white">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                
+                                <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                                    <span className="px-3.5 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold uppercase tracking-widest">
+                                        Our Strengths
+                                    </span>
+                                    <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-dark">
+                                        Why Parents Choose Bright Future
+                                    </h2>
+                                </div>
+
+                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                    {whyUsFeatures.map((feat, idx) => (
+                                        <div 
+                                            key={idx} 
+                                            className="bg-brand-cream hover:bg-white rounded-3xl p-8 border border-purple-100 hover:border-brand-300 shadow-sm hover:shadow-soft-pink transition-all duration-300 space-y-4"
+                                        >
+                                            <div className={`w-14 h-14 rounded-2xl ${feat.bg} flex items-center justify-center text-2xl shadow-xs`}>
+                                                {feat.icon}
+                                            </div>
+                                            <h3 className="text-xl font-bold text-brand-dark">
+                                                {feat.title}
+                                            </h3>
+                                            <p className="text-gray-600 text-sm leading-relaxed">
+                                                {feat.desc}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                            </div>
+                        </section>
+
+                        {}
+                        {/* 6. LEARNING EXPERIENCE SECTION */}
+                        <section className="py-20 bg-gradient-to-r from-brand-dark via-brand-purple to-brand-dark text-white relative overflow-hidden">
+                            <div className="absolute inset-0 opacity-10 bg-pattern"></div>
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                                
+                                <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                                    <span className="px-3.5 py-1 bg-brand-yellow/20 text-brand-yellow rounded-full text-xs font-bold uppercase tracking-widest border border-brand-yellow/30">
+                                        Holistic Growth
+                                    </span>
+                                    <h2 className="text-3xl sm:text-4xl font-extrabold">
+                                        More Than a Classroom
+                                    </h2>
+                                    <p className="text-purple-100 text-base sm:text-lg">
+                                        At Bright Future, learning happens in many ways. We encourage children to ask questions, solve problems, express themselves, work with others, and discover what they can do.
+                                    </p>
+                                </div>
+
+                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+                                    {learningPillars.map((item, idx) => (
+                                        <div 
+                                            key={idx} 
+                                            className="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-6 text-center space-y-3 hover:bg-white/20 hover:scale-105 transition-all cursor-default"
+                                        >
+                                            <div className="text-4xl mb-2">{item.icon}</div>
+                                            <p className="font-bold text-sm sm:text-base text-white">{item.name}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                            </div>
+                        </section>
+
+                        {}
+                        {/* 7. SCHOOL GALLERY PREVIEW */}
+                        <section id="gallery" className="py-20 bg-white">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                
+                                <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                                    <span className="px-3.5 py-1 bg-pink-100 text-brand-600 rounded-full text-xs font-bold uppercase tracking-widest">
+                                        Campus Life
+                                    </span>
+                                    <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-dark">
+                                        Life at Bright Future
+                                    </h2>
+                                    <p className="text-gray-600 text-base sm:text-lg">
+                                        Take a glimpse into the joyful moments, learning experiences, creativity, friendships, and discoveries that make school life special.
+                                    </p>
+                                </div>
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                    {galleryImages.map((img, idx) => (
+                                        <div 
+                                            key={idx} 
+                                            onClick={() => setGalleryModalImage(img)}
+                                            className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-lg cursor-pointer aspect-4/3 bg-gray-100"
+                                        >
+                                            <img 
+                                                src={img.url} 
+                                                alt={img.title} 
+                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white">
+                                                <span className="text-[10px] uppercase tracking-wider font-bold text-brand-yellow">{img.category}</span>
+                                                <p className="font-bold text-sm">{img.title}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="mt-12 text-center">
+                                    <button 
+                                        onClick={() => setVisitModalOpen(true)}
+                                        className="bg-brand-500 hover:bg-brand-600 text-white font-bold px-8 py-3.5 rounded-full shadow-soft-pink transition-all"
+                                    >
+                                        View Our Gallery & Campus
+                                    </button>
+                                </div>
+
+                            </div>
+                        </section>
+
+                        {}
+                        {/* 8. ADMISSIONS SECTION */}
+                        <section id="admissions" className="py-20 bg-gradient-to-br from-brand-50 via-purple-50 to-pink-50 border-y border-purple-100">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                
+                                <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                                    <span className="px-3.5 py-1 bg-brand-500 text-white rounded-full text-xs font-bold uppercase tracking-widest shadow-xs">
+                                        Join Our Family
+                                    </span>
+                                    <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-dark">
+                                        Give Your Child a Bright Start
+                                    </h2>
+                                    <p className="text-gray-600 text-base sm:text-lg">
+                                        Choosing the right school is an important decision. Our admissions team is here to answer your questions, guide you through the process, and help you learn more about Bright Future.
+                                    </p>
+                                </div>
+
+                                {/* Three-Step Admissions Process */}
+                                <div className="grid md:grid-cols-3 gap-8 relative">
+                                    
+                                    <div className="bg-white p-8 rounded-3xl shadow-sm border border-purple-100 text-center space-y-4 relative">
+                                        <div className="w-12 h-12 bg-brand-500 text-white font-black text-xl rounded-2xl flex items-center justify-center mx-auto shadow-md">
+                                            1
+                                        </div>
+                                        <h3 className="text-xl font-bold text-brand-dark">Make an Enquiry</h3>
+                                        <p className="text-gray-600 text-sm">
+                                            Contact us by phone, WhatsApp, email, or the enquiry form.
+                                        </p>
+                                    </div>
+
+                                    <div className="bg-white p-8 rounded-3xl shadow-sm border border-purple-100 text-center space-y-4 relative">
+                                        <div className="w-12 h-12 bg-brand-purple text-white font-black text-xl rounded-2xl flex items-center justify-center mx-auto shadow-md">
+                                            2
+                                        </div>
+                                        <h3 className="text-xl font-bold text-brand-dark">Visit the School</h3>
+                                        <p className="text-gray-600 text-sm">
+                                            Book a visit to see our learning environment and speak with our team.
+                                        </p>
+                                    </div>
+
+                                    <div className="bg-white p-8 rounded-3xl shadow-sm border border-purple-100 text-center space-y-4 relative">
+                                        <div className="w-12 h-12 bg-brand-dark text-white font-black text-xl rounded-2xl flex items-center justify-center mx-auto shadow-md">
+                                            3
+                                        </div>
+                                        <h3 className="text-xl font-bold text-brand-dark">Begin Your Child's Journey</h3>
+                                        <p className="text-gray-600 text-sm">
+                                            Complete the admission process and welcome your child to Bright Future.
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+                                    <button 
+                                        onClick={() => setAdmissionModalOpen(true)}
+                                        className="bg-brand-500 hover:bg-brand-600 text-white font-bold text-base px-8 py-4 rounded-2xl shadow-soft-pink transition-all text-center"
+                                    >
+                                        Enquire About Admission
+                                    </button>
+                                    <button 
+                                        onClick={() => setVisitModalOpen(true)}
+                                        className="bg-brand-dark hover:bg-brand-purple text-white font-bold text-base px-8 py-4 rounded-2xl shadow-md transition-all text-center"
+                                    >
+                                        Book a School Visit
+                                    </button>
+                                </div>
+
+                            </div>
+                        </section>
+
+                        {}
+                        {/* 9. PARENT TESTIMONIAL SECTION */}
+                        <section className="py-20 bg-white">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                
+                                <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                                    <span className="px-3.5 py-1 bg-purple-100 text-brand-dark rounded-full text-xs font-bold uppercase tracking-widest">
+                                        Community Feedback
+                                    </span>
+                                    <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-dark">
+                                        What Parents Say
+                                    </h2>
+                                    <p className="text-xs text-gray-400 font-medium italic">
+                                        Parent testimonials will be added here.
+                                    </p>
+                                </div>
+
+                                {/* Placeholder Testimonial Cards */}
+                                <div className="grid md:grid-cols-3 gap-8">
+                                    {[1, 2, 3].map((item) => (
+                                        <div 
+                                            key={item} 
+                                            className="bg-brand-cream border border-dashed border-brand-300 rounded-3xl p-8 text-center space-y-4 relative"
+                                        >
+                                            <div className="text-amber-400 text-xl font-bold">★★★★★</div>
+                                            <p className="text-gray-500 italic text-sm">
+                                                "[Parent Testimonial]"
+                                            </p>
+                                            <div className="pt-4 border-t border-purple-100">
+                                                <p className="font-bold text-brand-dark text-sm">[Parent Name]</p>
+                                                <p className="text-xs text-brand-500">[Parent's Child's Class]</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                            </div>
+                        </section>
+
+                        {}
+                        {/* 10. FAQ SECTION */}
+                        <section className="py-20 bg-brand-cream">
+                            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                                
+                                <div className="text-center space-y-4 mb-16">
+                                    <span className="px-3.5 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-bold uppercase tracking-widest">
+                                        Got Questions?
+                                    </span>
+                                    <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-dark">
+                                        Frequently Asked Questions
+                                    </h2>
+                                </div>
+
+                                <div className="space-y-4">
+                                    {faqs.map((faq, index) => (
+                                        <div 
+                                            key={index}
+                                            className="bg-white rounded-2xl border border-purple-100 shadow-xs overflow-hidden transition-all"
+                                        >
+                                            <button 
+                                                onClick={() => toggleFaq(index)}
+                                                className="w-full text-left p-6 font-bold text-brand-dark text-base sm:text-lg flex items-center justify-between gap-4 focus:outline-none"
+                                            >
+                                                <span>{faq.q}</span>
+                                                <span className={`w-8 h-8 rounded-full bg-purple-50 text-brand-dark flex items-center justify-center shrink-0 transition-transform ${activeFaq === index ? 'rotate-180 bg-brand-500 text-white' : ''}`}>
+                                                    ↓
+                                                </span>
+                                            </button>
+                                            {activeFaq === index && (
+                                                <div className="px-6 pb-6 text-gray-600 text-sm sm:text-base leading-relaxed border-t border-purple-50 pt-4">
+                                                    {faq.a}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+
+                            </div>
+                        </section>
+
+                        {}
+                        {/* 11. FINAL CALL TO ACTION */}
+                        <section className="py-20 bg-gradient-to-r from-brand-dark via-brand-purple to-brand-dark text-white relative overflow-hidden text-center">
+                            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
+                                <h2 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+                                    Ready to Give Your Child a Bright Start?
+                                </h2>
+                                <p className="text-purple-100 text-base sm:text-xl max-w-2xl mx-auto font-light">
+                                    Book a school visit or speak with our admissions team today. We would love to welcome you and your child to Bright Future.
+                                </p>
+                                <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+                                    <button 
+                                        onClick={() => setVisitModalOpen(true)}
+                                        className="w-full sm:w-auto bg-brand-500 hover:bg-brand-600 text-white font-bold text-lg px-9 py-4 rounded-2xl shadow-lg transition-all transform hover:-translate-y-0.5"
+                                    >
+                                        Book a School Visit
+                                    </button>
+                                    <a 
+                                        href="https://wa.me/?text=Hello%20Bright%20Future,%20I%20would%20like%20to%20enquire%20about%20admission."
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-lg px-9 py-4 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2"
+                                    >
+                                        <IconWhatsApp className="w-5 h-5" />
+                                        Chat on WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+
+                        {}
+                        {/* 12. CONTACT SECTION */}
+                        <section id="contact" className="py-20 bg-white">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                
+                                <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                                    <span className="px-3.5 py-1 bg-pink-100 text-brand-600 rounded-full text-xs font-bold uppercase tracking-widest">
+                                        Get In Touch
+                                    </span>
+                                    <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-dark">
+                                        Contact Bright Future
+                                    </h2>
+                                </div>
+
+                                <div className="grid lg:grid-cols-12 gap-12">
+                                    
+                                    {/* Contact Details & Map */}
+                                    <div className="lg:col-span-5 space-y-8">
+                                        <div className="bg-brand-cream rounded-3xl p-8 border border-purple-100 space-y-6">
+                                            <h3 className="text-xl font-bold text-brand-dark">School Contact Details</h3>
+                                            
+                                            <div className="space-y-4 text-sm">
+                                                <div className="flex items-start gap-4">
+                                                    <div className="w-10 h-10 rounded-xl bg-purple-100 text-brand-dark flex items-center justify-center shrink-0">
+                                                        <IconMapPin />
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-bold text-gray-900">Address</p>
+                                                        <p className="text-gray-600">[School Address]</p>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-start gap-4">
+                                                    <div className="w-10 h-10 rounded-xl bg-pink-100 text-brand-600 flex items-center justify-center shrink-0">
+                                                        <IconPhone />
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-bold text-gray-900">Phone</p>
+                                                        <p className="text-gray-600">[Phone Number]</p>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-start gap-4">
+                                                    <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                                                        <IconWhatsApp />
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-bold text-gray-900">WhatsApp</p>
+                                                        <p className="text-gray-600">[WhatsApp Number]</p>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-start gap-4">
+                                                    <div className="w-10 h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center shrink-0">
+                                                        <IconMail />
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-bold text-gray-900">Email</p>
+                                                        <p className="text-gray-600">[Email Address]</p>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-start gap-4">
+                                                    <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                                                        <IconClock />
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-bold text-gray-900">Opening Hours</p>
+                                                        <p className="text-gray-600">[School Opening Hours]</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Google Maps Embed Placeholder */}
+                                        <div className="rounded-3xl overflow-hidden border border-purple-100 bg-purple-50 h-64 flex flex-col items-center justify-center p-6 text-center shadow-inner">
+                                            <IconMapPin className="w-10 h-10 text-brand-500 mb-2" />
+                                            <p className="font-bold text-brand-dark">Location Map</p>
+                                            <p className="text-xs text-gray-500 mt-1 mb-4">[Google Maps Link]</p>
+                                            <a 
+                                                href="#contact" 
+                                                className="text-xs bg-white text-brand-dark px-4 py-2 rounded-xl font-bold shadow-xs hover:bg-brand-50"
+                                            >
+                                                Open Map Direction
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    {/* Contact / Enquiry Form */}
+                                    <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border-2 border-purple-100 shadow-soft-purple">
+                                        <h3 className="text-2xl font-bold text-brand-dark mb-6">
+                                            Send Us an Enquiry
+                                        </h3>
+
+                                        {formSubmitted ? (
+                                            <div className="bg-emerald-50 border-2 border-emerald-300 rounded-2xl p-8 text-center space-y-4 animate-fadeIn">
+                                                <div className="w-16 h-16 bg-emerald-500 text-white text-3xl rounded-full flex items-center justify-center mx-auto shadow-md">
+                                                    ✓
+                                                </div>
+                                                <h4 className="text-xl font-bold text-emerald-900">Message Received!</h4>
+                                                <p className="text-emerald-800 text-base font-medium">
+                                                    Thank you for contacting Bright Future. Our admissions team will get back to you shortly.
+                                                </p>
+                                                <button 
+                                                    onClick={() => setFormSubmitted(false)}
+                                                    className="mt-4 bg-emerald-600 text-white font-bold text-xs px-6 py-2.5 rounded-xl"
+                                                >
+                                                    Send Another Enquiry
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <form onSubmit={handleFormSubmit} className="space-y-4">
+                                                
+                                                <div className="grid sm:grid-cols-2 gap-4">
+                                                    <div>
+                                                        <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                                                            Parent/Guardian Full Name *
+                                                        </label>
+                                                        <input 
+                                                            type="text" 
+                                                            name="fullName"
+                                                            required
+                                                            value={formData.fullName}
+                                                            onChange={handleInputChange}
+                                                            placeholder="e.g. Mrs. Funke Adebayo"
+                                                            className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
+                                                        />
+                                                    </div>
+
+                                                    <div>
+                                                        <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                                                            Child's Name *
+                                                        </label>
+                                                        <input 
+                                                            type="text" 
+                                                            name="childName"
+                                                            required
+                                                            value={formData.childName}
+                                                            onChange={handleInputChange}
+                                                            placeholder="e.g. Daniel Adebayo"
+                                                            className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div className="grid sm:grid-cols-2 gap-4">
+                                                    <div>
+                                                        <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                                                            Child's Age *
+                                                        </label>
+                                                        <input 
+                                                            type="text" 
+                                                            name="childAge"
+                                                            required
+                                                            value={formData.childAge}
+                                                            onChange={handleInputChange}
+                                                            placeholder="e.g. 4 years"
+                                                            className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
+                                                        />
+                                                    </div>
+
+                                                    <div>
+                                                        <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                                                            Preferred Class or Programme
+                                                        </label>
+                                                        <select 
+                                                            name="programme"
+                                                            value={formData.programme}
+                                                            onChange={handleInputChange}
+                                                            className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm bg-white"
+                                                        >
+                                                            <option value="Early Years">Early Years</option>
+                                                            <option value="Nursery">Nursery</option>
+                                                            <option value="Primary School">Primary School</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div className="grid sm:grid-cols-2 gap-4">
+                                                    <div>
+                                                        <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                                                            Phone Number *
+                                                        </label>
+                                                        <input 
+                                                            type="tel" 
+                                                            name="phone"
+                                                            required
+                                                            value={formData.phone}
+                                                            onChange={handleInputChange}
+                                                            placeholder="[Phone Number]"
+                                                            className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
+                                                        />
+                                                    </div>
+
+                                                    <div>
+                                                        <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                                                            Email Address *
+                                                        </label>
+                                                        <input 
+                                                            type="email" 
+                                                            name="email"
+                                                            required
+                                                            value={formData.email}
+                                                            onChange={handleInputChange}
+                                                            placeholder="[Email Address]"
+                                                            className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                                                        Preferred Contact Method
+                                                    </label>
+                                                    <div className="flex gap-4 pt-1">
+                                                        {['WhatsApp', 'Phone', 'Email'].map((method) => (
+                                                            <label key={method} className="flex items-center gap-2 cursor-pointer text-sm">
+                                                                <input 
+                                                                    type="radio" 
+                                                                    name="preferredContact" 
+                                                                    value={method}
+                                                                    checked={formData.preferredContact === method}
+                                                                    onChange={handleInputChange}
+                                                                    className="text-brand-500 focus:ring-brand-500"
+                                                                />
+                                                                {method}
+                                                            </label>
+                                                        ))}
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                                                        Message / Special Questions
+                                                    </label>
+                                                    <textarea 
+                                                        name="message"
+                                                        rows="3"
+                                                        value={formData.message}
+                                                        onChange={handleInputChange}
+                                                        placeholder="Tell us any specific details or questions you have..."
+                                                        className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
+                                                    ></textarea>
+                                                </div>
+
+                                                <button 
+                                                    type="submit"
+                                                    className="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-4 rounded-xl shadow-soft-pink hover:shadow-md transition-all text-base mt-2"
+                                                >
+                                                    Send Enquiry
+                                                </button>
+
+                                            </form>
+                                        )}
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </section>
+
+                    </main>
+
+                    {}
+                    {/* 13. FOOTER */}
+                    <footer className="bg-brand-dark text-white pt-16 pb-12 border-t-4 border-brand-500">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-purple-900">
+                                
+                                {/* Brand Info */}
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center text-white font-black text-lg">
+                                            BF
+                                        </div>
+                                        <span className="font-extrabold text-2xl tracking-tight text-white">
+                                            Bright Future
+                                        </span>
+                                    </div>
+                                    <p className="text-xs italic text-brand-200">
+                                        “Nurturing Bright Minds for a Beautiful Future”
+                                    </p>
+                                    <p className="text-xs text-purple-200 leading-relaxed">
+                                        Providing safe, caring, child-centred early years and primary education in Nigeria.
+                                    </p>
+                                </div>
+
+                                {/* Quick Links */}
+                                <div className="space-y-3">
+                                    <h4 className="font-bold text-sm text-brand-yellow uppercase tracking-wider">Quick Links</h4>
+                                    <ul className="space-y-2 text-xs text-purple-200">
+                                        <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
+                                        <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
+                                        <li><a href="#why-us" className="hover:text-white transition-colors">Why Bright Future</a></li>
+                                        <li><a href="#admissions" className="hover:text-white transition-colors">Admissions Process</a></li>
+                                        <li><a href="#gallery" className="hover:text-white transition-colors">School Gallery</a></li>
+                                        <li><a href="#contact" className="hover:text-white transition-colors">Contact Us</a></li>
+                                    </ul>
+                                </div>
+
+                                {/* Programmes Links */}
+                                <div className="space-y-3">
+                                    <h4 className="font-bold text-sm text-brand-yellow uppercase tracking-wider">Our Programmes</h4>
+                                    <ul className="space-y-2 text-xs text-purple-200">
+                                        <li><a href="#programmes" className="hover:text-white transition-colors">Early Years Programme</a></li>
+                                        <li><a href="#programmes" className="hover:text-white transition-colors">Nursery Education</a></li>
+                                        <li><a href="#programmes" className="hover:text-white transition-colors">Primary School</a></li>
+                                        <li><a href="#programmes" className="hover:text-white transition-colors">Literacy & Reading</a></li>
+                                        <li><a href="#programmes" className="hover:text-white transition-colors">Creative Arts & Play</a></li>
+                                    </ul>
+                                </div>
+
+                                {/* Contact Details & Social Placeholders */}
+                                <div className="space-y-4">
+                                    <h4 className="font-bold text-sm text-brand-yellow uppercase tracking-wider">Connect With Us</h4>
+                                    <div className="space-y-2 text-xs text-purple-200">
+                                        <p>📍 [School Address]</p>
+                                        <p>📞 [Phone Number]</p>
+                                        <p>💬 [WhatsApp Number]</p>
+                                        <p>✉️ [Email Address]</p>
+                                    </div>
+                                    
+                                    {/* Social Icons Placeholders */}
+                                    <div className="flex gap-3 pt-2">
+                                        <a href="#contact" className="w-8 h-8 rounded-full bg-purple-900 hover:bg-brand-500 text-white flex items-center justify-center text-xs transition-colors" title="Instagram">IG</a>
+                                        <a href="#contact" className="w-8 h-8 rounded-full bg-purple-900 hover:bg-brand-500 text-white flex items-center justify-center text-xs transition-colors" title="Facebook">FB</a>
+                                        <a href="#contact" className="w-8 h-8 rounded-full bg-purple-900 hover:bg-emerald-500 text-white flex items-center justify-center text-xs transition-colors" title="WhatsApp">WA</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            {/* Copyright & Legal */}
+                            <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-purple-300">
+                                <p>© 2026 Bright Future. All rights reserved.</p>
+                                <div className="flex gap-6">
+                                    <a href="#" className="hover:underline">Privacy Policy</a>
+                                    <a href="#" className="hover:underline">Terms and Conditions</a>
+                                    <a href="[Admission Link]" className="hover:underline text-brand-yellow">[Admission Link]</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </footer>
+
+                    {}
+                    {/* FLOATING WHATSAPP BUTTON */}
+                    <a 
+                        href="https://wa.me/?text=Hello%20Bright%20Future,%20I%20would%20like%20to%20enquire%20about%20admission."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl transition-all transform hover:scale-110 flex items-center justify-center group"
+                        aria-label="Chat on WhatsApp"
+                    >
+                        <IconWhatsApp className="w-7 h-7" />
+                        <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out text-xs font-bold pl-0 group-hover:pl-2">
+                            Chat with Admissions
+                        </span>
+                    </a>
+
+                    {/* INTERACTIVE MODAL: Book a School Visit */}
+                    {visitModalOpen && (
+                        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fadeIn">
+                            <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full relative shadow-2xl border border-purple-100">
+                                <button 
+                                    onClick={() => setVisitModalOpen(false)}
+                                    className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 p-2 rounded-full"
+                                >
+                                    <IconX />
+                                </button>
+
+                                <div className="space-y-4">
+                                    <div className="w-12 h-12 bg-pink-100 text-brand-600 rounded-2xl flex items-center justify-center text-xl font-bold">
+                                        🏫
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-brand-dark">Schedule a Campus Visit</h3>
+                                    <p className="text-sm text-gray-600">
+                                        We invite parents to experience Bright Future firsthand. Please choose your preferred date and contact channel.
+                                    </p>
+
+                                    <form onSubmit={(e) => { e.preventDefault(); setVisitModalOpen(false); alert("School visit request sent! Our team will reach out to confirm your slot."); }} className="space-y-3 pt-2">
+                                        <input 
+                                            type="text" 
+                                            required 
+                                            placeholder="Your Name" 
+                                            className="w-full px-4 py-2.5 rounded-xl border border-purple-200 text-sm focus:ring-2 focus:ring-brand-500" 
+                                        />
+                                        <input 
+                                            type="tel" 
+                                            required 
+                                            placeholder="[Phone Number]" 
+                                            className="w-full px-4 py-2.5 rounded-xl border border-purple-200 text-sm focus:ring-2 focus:ring-brand-500" 
+                                        />
+                                        <input 
+                                            type="date" 
+                                            required 
+                                            className="w-full px-4 py-2.5 rounded-xl border border-purple-200 text-sm focus:ring-2 focus:ring-brand-500" 
+                                        />
+                                        <button 
+                                            type="submit" 
+                                            className="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl shadow-soft-pink"
+                                        >
+                                            Confirm Visit Booking
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* INTERACTIVE MODAL: Apply / Enquire Modal */}
+                    {admissionModalOpen && (
+                        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fadeIn">
+                            <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full relative shadow-2xl border border-purple-100">
+                                <button 
+                                    onClick={() => setAdmissionModalOpen(false)}
+                                    className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 p-2 rounded-full"
+                                >
+                                    <IconX />
+                                </button>
+
+                                <div className="space-y-4">
+                                    <div className="w-12 h-12 bg-purple-100 text-brand-dark rounded-2xl flex items-center justify-center text-xl font-bold">
+                                        📝
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-brand-dark">Admissions Enquiry</h3>
+                                    <p className="text-sm text-gray-600">
+                                        Begin your child's journey at Bright Future. Fill in your details below and our admissions counsellor will contact you.
+                                    </p>
+
+                                    <form onSubmit={(e) => { e.preventDefault(); setAdmissionModalOpen(false); alert("Admissions enquiry submitted! Thank you for choosing Bright Future."); }} className="space-y-3 pt-2">
+                                        <input 
+                                            type="text" 
+                                            required 
+                                            placeholder="Parent's Name" 
+                                            className="w-full px-4 py-2.5 rounded-xl border border-purple-200 text-sm focus:ring-2 focus:ring-brand-500" 
+                                        />
+                                        <input 
+                                            type="text" 
+                                            required 
+                                            placeholder="Child's Name & Age" 
+                                            className="w-full px-4 py-2.5 rounded-xl border border-purple-200 text-sm focus:ring-2 focus:ring-brand-500" 
+                                        />
+                                        <input 
+                                            type="tel" 
+                                            required 
+                                            placeholder="[Phone Number]" 
+                                            className="w-full px-4 py-2.5 rounded-xl border border-purple-200 text-sm focus:ring-2 focus:ring-brand-500" 
+                                        />
+                                        <button 
+                                            type="submit" 
+                                            className="w-full bg-brand-dark hover:bg-brand-purple text-white font-bold py-3 rounded-xl shadow-md"
+                                        >
+                                            Submit Admission Request
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* LIGHTBOX MODAL FOR GALLERY */}
+                    {galleryModalImage && (
+                        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn" onClick={() => setGalleryModalImage(null)}>
+                            <div className="bg-white rounded-3xl p-4 max-w-2xl w-full relative overflow-hidden" onClick={e => e.stopPropagation()}>
+                                <button 
+                                    onClick={() => setGalleryModalImage(null)}
+                                    className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full z-10"
+                                >
+                                    <IconX />
+                                </button>
+                                <img src={galleryModalImage.url} alt={galleryModalImage.title} className="w-full h-80 object-cover rounded-2xl" />
+                                <div className="p-4">
+                                    <span className="text-xs font-bold text-brand-500 uppercase">{galleryModalImage.category}</span>
+                                    <h4 className="text-xl font-bold text-brand-dark">{galleryModalImage.title}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
